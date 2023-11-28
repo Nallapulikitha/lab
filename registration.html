@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .error {
+            border: 1px solid #ff0000;
+        }
+
+        .success {
+            border: 1px solid #00ff00;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <form onsubmit="validateForm()">
+        <h2>Registration Form</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" class="input-field" >
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="input-field" >
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="input-field" >
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" class="input-field" >
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">other</option>
+        </select>
+
+        <label for="languages">Languages Known:</label>
+        <input type="text" id="languages" name="languages" class="input-field" >
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" class="input-field" ></textarea>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var name = document.getElementById("name");
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+            var gender = document.getElementById("gender");
+            var languages = document.getElementById("languages");
+            var address = document.getElementById("address");
+
+            var isValid = true;
+
+            if (name.value.trim() === "<8 characters") {
+                name.classList.add("error");
+                isValid = false;
+            } else {
+                name.classList.remove("error");
+                name.classList.add("success");
+            }
+
+            if (email.value.trim() === "" || !isValidEmail(email.value.trim())) {
+                email.classList.add("error");
+                isValid = false;
+            } else {
+                email.classList.remove("error");
+                email.classList.add("success");
+            }
+
+            if (password.value.trim() === "") {
+                password.classList.add("error");
+                isValid = false;
+            } else {
+                password.classList.remove("error");
+                password.classList.add("success");
+            }
+
+            if (gender.value === "") {
+                gender.classList.add("error");
+                isValid = false;
+            } else {
+                gender.classList.remove("error");
+                gender.classList.add("success");
+            }
+
+            if (languages.value.trim() === "") {
+                languages.classList.add("error");
+                isValid = false;
+            } else {
+                languages.classList.remove("error");
+                languages.classList.add("success");
+            }
+
+            if (address.value.trim() === "") {
+                address.classList.add("error");
+                isValid = false;
+            } else {
+                address.classList.remove("error");
+                address.classList.add("success");
+            }
+
+            return isValid;
+        }
+
+        function isValidEmail(email) {
+            // Basic email validation
+            var emailRegex = /\S+@\S+\.\S+/;
+            return emailRegex.test(email);
+        }
+    </script>
+
+</body>
+</html>
