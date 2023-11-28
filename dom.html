@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Demonstration</title>
+</head>
+<body>
+
+    <h1>DOM Demonstration</h1>
+    
+    <p id="demo-paragraph">Click the button to change this text.</p>
+    
+    <button id="changeTextButton">Change Text</button>
+
+    <script>
+        // JavaScript code to demonstrate DOM manipulation
+        document.getElementById("changeTextButton").addEventListener("click", function() {
+            // Get the paragraph element by its id
+            var paragraph = document.getElementById("demo-paragraph");
+            
+            // Change the text content of the paragraph
+            paragraph.textContent = "Text changed using DOM manipulation!";
+        });
+    </script>
+
+</body>
+</html>
